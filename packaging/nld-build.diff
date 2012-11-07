@@ -1,0 +1,50 @@
+--- configure.ac
++++ configure.ac
+@@ -140,7 +140,7 @@
+ 
+ 
+ # To be used in ksba-config
+-KSBA_CONFIG_LIBS="-lksba"
++KSBA_CONFIG_LIBS="-lksba-nld"
+ KSBA_CONFIG_CFLAGS=""
+ AC_SUBST(KSBA_CONFIG_LIBS)
+ AC_SUBST(KSBA_CONFIG_CFLAGS)
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -26,7 +26,7 @@
+ BUILT_SOURCES = asn1-parse.c asn1-tables.c
+ bin_SCRIPTS = ksba-config
+ include_HEADERS = ksba.h
+-lib_LTLIBRARIES = libksba.la
++lib_LTLIBRARIES = libksba-nld.la
+ 
+ if ! CROSS_COMPILING
+ noinst_PROGRAMS = asn1-gentables ber-dump
+@@ -46,12 +46,12 @@
+ 
+ 
+ 
+-libksba_la_LDFLAGS = $(libksba_version_script_cmd) -version-info \
++libksba_nld_la_LDFLAGS = $(libksba_version_script_cmd) -version-info \
+       @LIBKSBA_LT_CURRENT@:@LIBKSBA_LT_REVISION@:@LIBKSBA_LT_AGE@
+-libksba_la_INCLUDES = -I$(top_srcdir)/lib 
+-libksba_la_DEPENDENCIES = $(srcdir)/libksba.vers
++libksba_nld_la_INCLUDES = -I$(top_srcdir)/lib 
++libksba_nld_la_DEPENDENCIES = $(srcdir)/libksba.vers
+ 
+-libksba_la_SOURCES = \
++libksba_nld_la_SOURCES = \
+ 	ksba.h \
+ 	reader.c reader.h \
+ 	writer.c writer.h \
+--- tests/Makefile.am
++++ tests/Makefile.am
+@@ -44,7 +44,7 @@
+ 
+ noinst_HEADERS = t-common.h
+ noinst_PROGRAMS = $(TESTS) t-cms-parser t-crl-parser t-dnparser t-ocsp
+-LDADD = ../src/libksba.la $(GPG_ERROR_LIBS)
++LDADD = ../src/libksba-nld.la $(GPG_ERROR_LIBS)
+ 
+ t_ocsp_SOURCES = t-ocsp.c sha1.c
+ 
