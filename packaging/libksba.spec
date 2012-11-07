@@ -1,5 +1,5 @@
 Name:           libksba
-Version:        1.2.0
+Version:        1.3.0
 Release:        1
 License:        GPL-3.0+
 Summary:        A X
