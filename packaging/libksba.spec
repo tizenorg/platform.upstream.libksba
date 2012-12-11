@@ -2,7 +2,7 @@ Name:           libksba
 Version:        1.3.0
 Release:        1
 License:        GPL-3.0+
-Summary:        A X
+Summary:        KSBA Library
 Url:            http://www.gnupg.org/aegypten/
 Group:          Development/Libraries/C and C++
 Source:         libksba-%{version}.tar.bz2
