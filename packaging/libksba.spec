@@ -48,7 +48,7 @@ make check
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libksba*.so.*
 
 
