@@ -1,10 +1,10 @@
 Name:           libksba
 Version:        1.3.0
 Release:        1
-License:        GPL-3.0+
+License:        GPL-3.0+ and LGPL-3.0+
 Summary:        KSBA Library
 Url:            http://www.gnupg.org/aegypten/
-Group:          Development/Libraries/C and C++
+Group:          Security/Libraries
 Source:         libksba-%{version}.tar.bz2
 BuildRequires:  libgpg-error-devel >= 1.8
 BuildRequires:  libtool
@@ -14,9 +14,7 @@ KSBA is a library to simplify the task of working with X.509
 certificates, CMS data, and related data.
 
 %package devel
-License:        GPL-2.0+ ; MIT
 Summary:        A X
-Group:          Development/Libraries/C and C++
 Requires:       libgpg-error-devel
 Requires:       libksba = %{version}
 Provides:       libksba:/usr/include/ksba.h
@@ -48,7 +46,7 @@ make check
 
 %files
 %defattr(-,root,root)
-%license COPYING
+%license COPYING*
 %{_libdir}/libksba*.so.*
 
 
