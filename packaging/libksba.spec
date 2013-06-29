@@ -6,6 +6,7 @@ Summary:        KSBA Library
 Url:            http://www.gnupg.org/aegypten/
 Group:          Security/Libraries
 Source:         libksba-%{version}.tar.bz2
+Source1001: 	libksba.manifest
 BuildRequires:  libgpg-error-devel >= 1.8
 BuildRequires:  libtool
 
@@ -28,6 +29,7 @@ libksba.
 
 %prep
 %setup -q -n libksba-%{version}
+cp %{SOURCE1001} .
 
 %build
 autoreconf -fi
@@ -45,12 +47,14 @@ make check
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING*
 %{_libdir}/libksba*.so.*
 
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_bindir}/*
 %{_libdir}/libksba*.so
