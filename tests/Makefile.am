@@ -42,6 +42,7 @@ CLEANFILES = oidtranstbl.h
 TESTS = cert-basic t-crl-parser t-dnparser
 
 AM_CFLAGS = $(GPG_ERROR_CFLAGS)
+AM_LDFLAGS = -no-install
 
 noinst_HEADERS = t-common.h
 noinst_PROGRAMS = $(TESTS) t-cms-parser t-crl-parser t-dnparser t-ocsp t-oid
@@ -59,3 +60,5 @@ oidtranstbl.h: Makefile mkoidtbl.awk
                  /usr/share ; do \
           if test -f $$i/dumpasn1.cfg; then f=$$i/dumpasn1.cfg; break; fi; \
         done; $(AWK) -f $(srcdir)/mkoidtbl.awk $$f >$@
+
+LOG_COMPILER = $(VALGRIND)
