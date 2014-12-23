@@ -1,12 +1,12 @@
 Name:           libksba
-Version:        1.3.0
-Release:        1
+Version:        1.3.1
+Release:        0
 License:        GPL-3.0+ and LGPL-3.0+
 Summary:        KSBA Library
 Url:            http://www.gnupg.org/aegypten/
 Group:          Security/Libraries
 Source:         libksba-%{version}.tar.bz2
-Source1001: 	libksba.manifest
+Source1001:     libksba.manifest
 BuildRequires:  libgpg-error-devel >= 1.8
 BuildRequires:  libtool
 
@@ -32,9 +32,8 @@ libksba.
 cp %{SOURCE1001} .
 
 %build
-autoreconf -fi
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+%reconfigure --disable-static --with-pic
+%__make %{?_smp_mflags}
 
 %check
 make check
@@ -61,5 +60,3 @@ make check
 %{_includedir}/*
 %doc %{_infodir}/ksba*
 %{_datadir}/aclocal/*
-
-%changelog
